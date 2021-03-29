@@ -3,7 +3,7 @@
 import csv  # library used for importing CSV files
 import numpy as np
 from sklearn import svm  # library for creating SVM model
-from sklearn.model_selection import cross_val_score # library for running k-fold cross validation
+from sklearn.model_selection import cross_val_score  # library for running k-fold cross validation
 
 # Import CSV file heart_failure_clinical_records_dataset.csv
 f = open('heart_failure_clinical_records_dataset.csv', newline='')
@@ -35,4 +35,11 @@ model = svm.SVC(kernel='poly')
 # run 10-fold CV for the polynomial SVC model:
 print("now computing the accuracy for the polynomial SVC kernel: ")
 scores = cross_val_score(model, features, label, scoring='accuracy', cv=10)
-print("The average classification accuracy for the linear SVM model under the 10-fold CV is: " + str(scores.mean()))
+print("The average classification accuracy for the polynomial SVM model under the 10-fold CV is: " + str(scores.mean()))
+
+# output:
+# now computing the accuracy for the linear SVC kernel:
+# The average classification accuracy for the linear SVM model under the 10-fold CV is: 0.7556321839080461
+
+# now computing the accuracy for the polynomial SVC kernel:
+# The average classification accuracy for the polynomial SVM model under the 10-fold CV is: 0.6789655172413793
